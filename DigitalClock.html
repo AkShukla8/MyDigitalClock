@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     
+    <script>
+        $(document).ready(function()
+        {
+            function ShowTime()
+            {
+                //to get the current Date .(new is a keyword )
+                var date = new Date();
+
+                //create variable to get hours ,minute,and Second .
+                var hours = date.getHours();
+                var min = date.getMinutes();
+                var sec = date.getSeconds();
+                //Am ,PM Setting
+
+                var session = "AM"
+                //condition For Time Behaivor
+                if(hours == 0)
+                {
+                    hours = 12;
+                }
+                //if time is greter than 12 than change  (Pm) .
+                if(hours >= 12)
+                {
+                    session = "PM";
+                }
+                if(hours > 12)
+                {
+                    hours = hours-12;
+                }
+                //to Set the time ,minute,second (if both are less than 10 than add 0 to starting number ).
+
+                hours = hours < 10 ? "0" + hours : hours;
+                min = min < 10 ? "0" + min : min;
+                sec = sec < 10 ? "0" + sec : sec;
+
+                //set the variable to span
+                $("#Hours").text(hours);
+                $("#Min").text(min);
+                $("#sec").text(sec);
+                $("#Period").text(session);
+                //to change time in Every Second 
+                setTimeout(ShowTime,1000);
+            }
+            ShowTime();
+        });
+
+
+
+
+    </script>
+    <style>
+          *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: "montserrat",sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient( rgb(231, 160, 27),aqua);
+
+        }
+        h1{
+            background-color: rgb(20, 20, 165);
+            color: rgb(224, 228, 31);
+            padding: 10px;
+            font-weight: 200;
+           text-align: center;
+           text-transform: uppercase;
+           border-radius: 20px;
+            
+            
+        }
+        .time
+        {
+            display: inline-block;
+            position: relative;
+            margin: 10px;
+            
+        }
+       .time span{
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+       .time span:nth-child(1)
+       {
+           width: 180px;
+           height: 90px;
+           color: rgb(234, 240, 245);
+           background-color: #ee49c5;
+           font-size: 25px;
+           font-weight: 400;
+           text-align: center;
+           text-transform: uppercase;
+           border-radius: 20px;
+       }
+       .time:nth-last-of-type(2) span:nth-child(1)
+       {
+           background-color: greenyellow;
+       }
+       .time:nth-last-of-type(3) span:nth-child(1)
+       {
+           background-color: red;
+       }
+       .time:nth-last-of-type(4) span:nth-child(1)
+       {
+           background-color: #161817;
+       }
+       .time span:nth-child(2)
+       {
+           height: 50px;
+           color: rgb(251, 252, 253);
+           background-color: #ee49c5;
+           font-size: 40px;
+           font-weight: 600;
+           border-radius: 20px;
+       }
+       .time:nth-last-of-type(2) span:nth-child(2)
+       {
+           background-color: greenyellow;
+       }
+       .time:nth-last-of-type(3) span:nth-child(2)
+       {
+           background-color: red;
+       }
+       .time:nth-last-of-type(4) span:nth-child(2)
+       {
+           background-color: #101111;
+       }
+
+       
+    </style>
+  
+    <title>DIGITAl CLOCK</title>
+</head>
+<body>
+    <div class="container">
+    <h1>DIGITAl CLOCK</h1>
+    <div class="time ">
+        <span>time</span>
+        <span id="Hours">  00 </span>
+    </div>
+    <div class="time ">
+        <span>Minutes</span>
+        <span id="Min">  00 </span>
+    </div>
+    <div class="time ">
+        <span>second</span>
+        <span id="sec">  00 </span>
+    </div>
+    <div class="time ">
+        <span>Period</span>
+        <span id="Period">  AM </span>
+    </div>
+    
+</div>
+</body>
+</html>
